@@ -56,16 +56,28 @@ vnet = {
     resource_group_name = "rg-prepod-001"
     location            = "central india"
     address_space       = ["10.0.0.0/16"]
-    subnets = [
-      {
+    # # list of object vairable with ternary operator
+    # subnets = [
+    #   {
+    #     name             = "subnet-prepod-001"
+    #     address_prefixes = ["10.0.10.0/24"]
+    #   },
+    #   {
+    #     name             = "subnet-prepod-002"
+    #     address_prefixes = ["10.0.20.0/24"]
+    # }]
+
+    # map of object vairable without ternary operator
+    subnets = {
+      sub1 = {
         name             = "subnet-prepod-001"
         address_prefixes = ["10.0.10.0/24"]
-      },
-      {
+      }
+      sub2 = {
         name             = "subnet-prepod-002"
         address_prefixes = ["10.0.20.0/24"]
-    }]
-
+      }
+    }
   }
 
   vnet2 = {
@@ -74,12 +86,22 @@ vnet = {
     location                       = "central india"
     address_space                  = ["10.0.0.0/16"]
     private_endpoint_vnet_policies = "Disabled"
-    subnets = [{
-      name             = "subnet-prepod-003"
-      address_prefixes = ["10.0.30.0/24"]
-    }]
-
   }
 }
 
+pip = {
+  pip1 = {
+    name                 = "pip-prepod-001"
+    location             = "central india"
+    resource_group_name  = "rg-prepod-001"
+    allocation_method    = "Static"
+    ddos_protection_mode = "Disabled"
+  }
 
+   pip3 = {
+    name                = "pip-prepod-003"
+    location            = "central india"
+    resource_group_name = "rg-prepod-002"
+    allocation_method   = "Static"
+  }
+}

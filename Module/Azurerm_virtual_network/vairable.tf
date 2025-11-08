@@ -1,3 +1,4 @@
+# list of object vairable without ternary operator
 variable "vnet" {
   type = map(object({
     name                           = string
@@ -6,9 +7,9 @@ variable "vnet" {
     address_space                  = optional(list(string))
     dns_servers                    = optional(list(string))
     private_endpoint_vnet_policies = optional(string)
-    subnets = optional(list(object({
+    subnets = optional(map(object({
       name             = string
       address_prefixes = list(string)
-    })), [])
+    })), {})
   }))
 }

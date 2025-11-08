@@ -7,20 +7,21 @@ module "storage_account" {
   depends_on      = [module.resource_group]
   source          = "../../Module/Azurerm_storage_account"
   storage_account = var.storage_account
-
 }
 
 module "container" {
   depends_on = [module.storage_account]
   source     = "../../Module/Azurerm_container"
   container  = var.container
-
 }
 
 module "vnet" {
   depends_on = [module.resource_group]
   source     = "../../Module/Azurerm_virtual_network"
   vnet       = var.vnet
-
-
+}
+module "pip" {
+  depends_on = [ var.resource_group ]
+  source = "../../Module/Azurerm_public_ip"
+  pip = var.pip
 }
