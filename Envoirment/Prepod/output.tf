@@ -7,3 +7,4 @@ output "stg" {
 output "cont" {
   value = module.container
 }
+

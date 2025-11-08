@@ -50,3 +50,36 @@ container = {
     resource_group_name  = "rg-prepod-002"
   }
 }
+vnet = {
+  vnet1 = {
+    name                = "vnet-prepod-001"
+    resource_group_name = "rg-prepod-001"
+    location            = "central india"
+    address_space       = ["10.0.0.0/16"]
+    subnets = [
+      {
+        name             = "subnet-prepod-001"
+        address_prefixes = ["10.0.10.0/24"]
+      },
+      {
+        name             = "subnet-prepod-002"
+        address_prefixes = ["10.0.20.0/24"]
+    }]
+
+  }
+
+  vnet2 = {
+    name                           = "vnet-prepod-002"
+    resource_group_name            = "rg-prepod-002"
+    location                       = "central india"
+    address_space                  = ["10.0.0.0/16"]
+    private_endpoint_vnet_policies = "Disabled"
+    subnets = [{
+      name             = "subnet-prepod-003"
+      address_prefixes = ["10.0.30.0/24"]
+    }]
+
+  }
+}
+
+

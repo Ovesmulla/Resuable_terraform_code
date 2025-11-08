@@ -16,3 +16,11 @@ module "container" {
   container  = var.container
 
 }
+
+module "vnet" {
+  depends_on = [module.resource_group]
+  source     = "../../Module/Azurerm_virtual_network"
+  vnet       = var.vnet
+
+
+}
