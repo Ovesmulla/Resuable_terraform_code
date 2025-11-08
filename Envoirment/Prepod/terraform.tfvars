@@ -98,10 +98,44 @@ pip = {
     ddos_protection_mode = "Disabled"
   }
 
-   pip3 = {
+  pip3 = {
     name                = "pip-prepod-003"
     location            = "central india"
     resource_group_name = "rg-prepod-002"
     allocation_method   = "Static"
   }
 }
+
+nic = {
+  nic1 = {
+    nic_name             = "nic-prepod-001"
+    subnet_name          = "subnet-prepod-001"
+    virtual_network_name = "vnet-prepod-001"
+    location             = "central india"
+    resource_group_name  = "rg-prepod-001"
+    pip_name             = "pip-prepod-001"
+    ip_configurations = {
+      ip1 = {
+        name                          = "internal"
+        private_ip_address_allocation = "Dynamic"
+      }
+    }
+  }
+  nic2 = {
+    nic_name             = "nic-prepod-002"
+    subnet_name          = "subnet-prepod-002"
+    virtual_network_name = "vnet-prepod-001"
+    location             = "central india"
+    resource_group_name  = "rg-prepod-001"
+    pip_name             = "pip-prepod-001"
+    ip_configurations = {
+      ip1 = {
+        name                          = "internal"
+        private_ip_address_allocation = "Dynamic"
+      }
+    }
+  }
+}
+
+
+

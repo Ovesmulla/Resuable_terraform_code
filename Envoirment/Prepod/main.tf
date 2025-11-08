@@ -21,7 +21,13 @@ module "vnet" {
   vnet       = var.vnet
 }
 module "pip" {
-  depends_on = [ var.resource_group ]
-  source = "../../Module/Azurerm_public_ip"
-  pip = var.pip
+  depends_on = [var.resource_group]
+  source     = "../../Module/Azurerm_public_ip"
+  pip        = var.pip
+}
+
+module "nic" {
+  depends_on = [module.vnet]
+  source     = "../../Module/Azurerm_networl_interface"
+  nic        = var.nic
 }

@@ -15,3 +15,7 @@ output "vnet_ids" {
 output "pip_ids" {
   value = module.pip
 }
+
+output "nic_ids" {
+  value = module.pip
+}
