@@ -19,3 +19,7 @@ output "pip_ids" {
 output "nic_ids" {
   value = module.pip
 }
+
+output "nsg_ids" {
+  value = module.pip
+}

@@ -86,6 +86,10 @@ vnet = {
     location                       = "central india"
     address_space                  = ["10.0.0.0/16"]
     private_endpoint_vnet_policies = "Disabled"
+    sub1 = {
+      name             = "subnet-prepod-003"
+      address_prefixes = ["10.0.30.0/24"]
+    }
   }
 }
 
@@ -98,8 +102,8 @@ pip = {
     ddos_protection_mode = "Disabled"
   }
 
-  pip3 = {
-    name                = "pip-prepod-003"
+  pip2 = {
+    name                = "pip-prepod-002"
     location            = "central india"
     resource_group_name = "rg-prepod-002"
     allocation_method   = "Static"
@@ -137,5 +141,46 @@ nic = {
   }
 }
 
+nsg = {
+  nsg1 = {
+    name                = "nsg-prepod-001"
+    resource_group_name = "rg-prepod-001"
+    location            = "central india"
+    subnet_name         = "subnet-prepod-001"
+    vnet_name           = "vnet-prepod-001"
+    pip_name            = "pip-prepod-001"
+    security_rules = [{
+      name                       = "AllowSSH"
+      priority                   = 100
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "*"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+      direction                  = "Inbound"
+    }]
 
+  }
+  nsg2 = {
+    name                = "nsg-prepod-002"
+    resource_group_name = "rg-prepod-002"
+    location            = "central india"
+    subnet_name         = "subnet-prepod-003"
+    vnet_name           = "vnet-prepod-002"
+    pip_name            = "pip-prepod-002"
+    security_rules = [{
+      name                       = "AllowSSH1"
+      priority                   = 100
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "*"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+      direction                  = "Inbound"
+    }]
 
+  }
+
+}

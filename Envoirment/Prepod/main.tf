@@ -31,3 +31,9 @@ module "nic" {
   source     = "../../Module/Azurerm_networl_interface"
   nic        = var.nic
 }
+
+module "nsg" {
+  depends_on = [ module.resource_group ]
+  source = "../../Module/Azurerm_network_security_group"
+  nsg = var.nsg
+}
