@@ -13,16 +13,17 @@ resource_group = {
     location = "central india"
   }
 }
+
 storage_account = {
   stg1 = {
-    name                     = "osstorage001os"
+    name                     = "storageprepod001os"
     resource_group_name      = "rg-prepod-001"
     location                 = "central india"
     account_tier             = "Standard"
     account_replication_type = "GRS"
   }
   stg2 = {
-    name                             = "osstorage002os"
+    name                             = "storageprepod002os"
     resource_group_name              = "rg-prepod-002"
     location                         = "central india"
     account_tier                     = "Standard"
@@ -35,21 +36,22 @@ storage_account = {
 
   }
 }
+
 container = {
   cont1 = {
     name                              = "container1"
-    storage_account_name              = "osstorage001os"
+    storage_account_name              = "storageprepod001os"
     resource_group_name               = "rg-prepod-001"
     container_access_type             = "private"
     encryption_scope_override_enabled = "true"
-
   }
   cont2 = {
     name                 = "container1"
-    storage_account_name = "osstorage002os"
+    storage_account_name = "storageprepod002os"
     resource_group_name  = "rg-prepod-002"
   }
 }
+
 vnet = {
   vnet1 = {
     name                = "vnet-prepod-001"
@@ -79,7 +81,6 @@ vnet = {
       }
     }
   }
-
   vnet2 = {
     name                           = "vnet-prepod-002"
     resource_group_name            = "rg-prepod-002"
@@ -91,6 +92,13 @@ vnet = {
       address_prefixes = ["10.0.30.0/24"]
     }
   }
+  vnet3 = {
+    name                           = "vnet-prepod-003"
+    resource_group_name            = "rg-prepod-002"
+    location                       = "central india"
+    address_space                  = ["10.0.0.0/16"]
+    private_endpoint_vnet_policies = "Disabled"
+  }
 }
 
 pip = {
@@ -101,7 +109,6 @@ pip = {
     allocation_method    = "Static"
     ddos_protection_mode = "Disabled"
   }
-
   pip2 = {
     name                = "pip-prepod-002"
     location            = "central india"
@@ -180,7 +187,27 @@ nsg = {
       destination_address_prefix = "*"
       direction                  = "Inbound"
     }]
-
   }
-
 }
+
+kv = {
+  key1 = {
+    name                        = "kvprepod001os"
+    resource_group_name         = "nsg-prepod-001"
+    location                    = "central india"
+    sku_name                    = "standard"
+    enabled_for_disk_encryption = true
+    purge_protection_enabled    = false
+    soft_delete_retention_days  = 7
+  }
+  key2 = {
+    name                        = "kvprepod002os"
+    resource_group_name         = "nsg-prepod-002"
+    location                    = "central india"
+    sku_name                    = "standard"
+    enabled_for_disk_encryption = true
+    purge_protection_enabled    = false
+    soft_delete_retention_days  = 7
+  }
+}
+

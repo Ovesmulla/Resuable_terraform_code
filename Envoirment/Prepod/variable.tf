@@ -11,3 +11,5 @@ variable "pip" {}
 variable "nic" {}
 
 variable "nsg" {}
+
+variable "kv" {}
