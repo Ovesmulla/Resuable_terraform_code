@@ -27,3 +27,6 @@ output "nsg_ids" {
 output "key_vault_ids" {
   value = module.Key_Vault
 }
+output "vm_ids" {
+  value = module.Virtual_Machine
+}

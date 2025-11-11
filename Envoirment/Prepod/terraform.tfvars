@@ -193,7 +193,7 @@ nsg = {
 kv = {
   key1 = {
     name                        = "kvprepod001os"
-    resource_group_name         = "nsg-prepod-001"
+    resource_group_name         = "rg-prepod-001"
     location                    = "central india"
     sku_name                    = "standard"
     enabled_for_disk_encryption = true
@@ -202,7 +202,7 @@ kv = {
   }
   key2 = {
     name                        = "kvprepod002os"
-    resource_group_name         = "nsg-prepod-002"
+    resource_group_name         = "rg-prepod-002"
     location                    = "central india"
     sku_name                    = "standard"
     enabled_for_disk_encryption = true
@@ -211,3 +211,83 @@ kv = {
   }
 }
 
+secrets = {
+  secret1 = {
+    key_vault_name      = "kvprepod001os"
+    resource_group_name = "rg-prepod-001"
+    secret_name         = "vm1"
+    secret_value        = "prepodvm001"
+  }
+  secret2 = {
+    key_vault_name      = "kvprepod001os"
+    resource_group_name = "rg-prepod-001"
+    secret_name         = "password1"
+    secret_value        = "Oves@12345"
+  }
+  secret3 = {
+    key_vault_name      = "kvprepod002os"
+    resource_group_name = "rg-prepod-002"
+    secret_name         = "vm2"
+    secret_value        = "prepodvm002"
+  }
+  secret4 = {
+    key_vault_name      = "kvprepod002os"
+    resource_group_name = "rg-prepod-002"
+    secret_name         = "password2"
+    secret_value        = "Oves@12345"
+  }
+}
+vms = {
+  vm1 = {
+    vm_name                         = "vmprepod001os"
+    size                            = "Standard_F2"
+    vnet_name                       = "vnet-prepod-001"
+    pip_name                        = "pip-prepod-001"
+    key_vault_name                  = "kvprepod001os"
+    nic_name                        = "nic-prepod-001"
+    secret_name                     = "vm1"
+    secret_value                    = "password1"
+    location                        = "central india"
+    resource_group_name             = "rg-prepod-001"
+    disable_password_authentication = false
+    os_disk = [
+      {
+        caching              = "ReadWrite"
+        storage_account_type = "Standard_LRS"
+      }
+    ]
+    source_image_reference = [
+      {
+        publisher = "Canonical"
+        offer     = "0001-com-ubuntu-server-jammy"
+        sku       = "22_04-lts"
+        version   = "latest"
+    }]
+  }
+  vm2 = {
+    vm_name                         = "vmprepod002os"
+    size                            = "Standard_F2"
+    vnet_name                       = "vnet-prepod-002"
+    pip_name                        = "pip-prepod-002"
+    key_vault_name                  = "kvprepod002os"
+    nic_name                        = "nic-prepod-002"
+    secret_name                     = "vm2"
+    secret_value                    = "password2"
+    location                        = "central india"
+    resource_group_name             = "rg-prepod-002"
+    disable_password_authentication = false
+    os_disk = [
+      {
+        caching              = "ReadWrite"
+        storage_account_type = "Standard_LRS"
+      }
+    ]
+    source_image_reference = [
+      {
+        publisher = "Canonical"
+        offer     = "0001-com-ubuntu-server-jammy"
+        sku       = "22_04-lts"
+        version   = "latest"
+    }]
+  }
+}

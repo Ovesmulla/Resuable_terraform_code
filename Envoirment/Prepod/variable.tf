@@ -13,3 +13,7 @@ variable "nic" {}
 variable "nsg" {}
 
 variable "kv" {}
+
+variable "secrets" {}
+
+variable "vms" {}
